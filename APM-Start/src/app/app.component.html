@@ -1,6 +1,17 @@
-<div style="text-align:center">
+<div class="container">
   <h1>
-    Welcome to {{title}}!!
+    Welcome to {{title}}!
   </h1>
-  ... Starter Files ...
+
+  <div style="margin-top: 50px;">
+    <h2>Login</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" [(ngModel)]="username" placeholder="Enter your username"><br><br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="Enter your password"><br><br>
+      <button type="submit">Login</button>
+      <div *ngIf="response">{{response}}</div> <!-- This line displays the response -->
+    </form>
+  </div>
 </div>

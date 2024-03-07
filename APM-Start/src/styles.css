@@ -17,3 +17,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
+body {
+  background: linear-gradient(to right, #add8e6, #ffb6c1);
+}
