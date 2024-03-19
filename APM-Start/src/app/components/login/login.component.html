@@ -15,4 +15,5 @@
     <div *ngIf="loginState$ | async as loginState">{{loginState.response}}</div>
   </div>
   <img src="./assets/images/homescreen.jpg" alt="Background Image" style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; z-index: -1;">
+  <router-outlet></router-outlet>
 </div>
