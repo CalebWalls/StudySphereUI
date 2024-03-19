@@ -19,6 +19,6 @@ export class LoginComponent {
 
   onSubmit() {
     this.store.dispatch(Login({ username: this.username, password: this.password }));
-    this.router.navigate(['/new-screen']);
+    this.router.navigate(['/home']);
   }
 }
