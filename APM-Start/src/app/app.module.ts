@@ -26,7 +26,7 @@ import { LoginComponent } from './components/login/login.component';
     HttpClientModule,
     FormsModule,
     AppRoutingModule,
-    StoreModule.forRoot({ count: reducer }),
+    StoreModule.forRoot({ login: reducer }),
     EffectsModule.forRoot([LoginEffects])
   ],
   bootstrap: [AppComponent]

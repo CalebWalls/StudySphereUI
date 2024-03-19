@@ -1,24 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Login } from '../../store/login/login.actions';
-import { selectLoginState } from '../../store/login/login.selector';
+import { LoginState } from '../../store/login/login.reducer';
 import { Router } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { AppState } from 'src/app/app.state';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
   title = 'Study Sphere';
   username: string = '';
   password: string = '';
-  loginState$ = this.store.select(selectLoginState);
+  loginState$: Observable<LoginState>;
+  loginSubscription!: Subscription;
 
-  constructor(private store: Store, private router: Router) {}
+  constructor(private store: Store<AppState>, private router: Router) {
+    this.loginState$ = this.store.select(state => state.login);
+  }
+  
+  ngOnInit() {
+    this.loginState$ = this.store.select(state => state.login);
+    this.loginSubscription = this.loginState$.subscribe(state => {
+      console.log(state);
+      if (state.isLoggedIn) {
+        this.router.navigate(['/home']);
+      }
+    });
+    this.login();
+  }
+  
+  login() {
+    if (this.username && this.password) {
+      this.store.dispatch(Login({ username: this.username, password: this.password }));
+    }
+  }
 
-  onSubmit() {
-    this.store.dispatch(Login({ username: this.username, password: this.password }));
-    this.router.navigate(['/home']);
+  ngOnDestroy() {
+    if (this.loginSubscription) {
+      this.loginSubscription.unsubscribe();
+    }
   }
 }

@@ -11,6 +11,7 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string): Observable<string> {
-    return this.http.post<string>(this.url, { username, password }, { responseType: 'text' as 'json' });
+    return this.http.post(this.url, { username, password }, { responseType: 'text' });
   }
+  
 }
