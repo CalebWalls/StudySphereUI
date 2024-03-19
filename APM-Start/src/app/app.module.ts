@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './loginScreen/reducers/login.reducer';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';  // add this line
-
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule  // make sure this line is here
+    FormsModule,
+    StoreModule.forRoot({ count: reducer })
   ],
   bootstrap: [AppComponent]
 })

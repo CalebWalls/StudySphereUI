@@ -1,17 +1,55 @@
-body {
-  background: linear-gradient(to right, #add8e6, #ffb6c1);
+
+
+.container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-  font-family: 'Arial', sans-serif;
 }
 
-.container {
+.login-container {
   text-align: center;
 }
 
 form {
   display: inline-block;
 }
+/* styles.css */
+
+/* Submit button styles */
+.button-submit {
+  background-color: #f9f9fa;
+  color: rgb(10, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mat-form-field-label {
+  font-weight: bold;
+  font-size: 16px;
+  color: #ffffff; /* Customize the color as desired */
+}
+
+.custom-input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+/* Optional: Add hover effect */
+.custom-input:hover {
+  border-color: #007bff;
+}
+h1, h2 {
+  color: #ffffff; /* This is white, but you can choose any light color */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+

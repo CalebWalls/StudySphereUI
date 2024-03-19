@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Store } from '@ngrx/store';
+import { login } from './loginScreen/actions/login.actions';
+import { selectLoginState } from './loginScreen/selectors/login.selector';
 
 @Component({
   selector: 'pm-root',
@@ -10,21 +12,11 @@ export class AppComponent {
   title = 'Study Sphere';
   username: string = '';
   password: string = '';
-  response: string = ''; // Corrected here
+  loginState$ = this.store.select(selectLoginState);
 
-  constructor(private http: HttpClient) {}
+  constructor(private store: Store) {}
 
   onSubmit() {
-    const url = 'http://localhost:5192/User/login';
-    this.http.post(url, { username: this.username, password: this.password }, { responseType: 'text' }).subscribe(
-      (res: string) => {
-        this.response = res;
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.store.dispatch(login({ username: this.username, password: this.password }));
   }
-  
-  
 }
